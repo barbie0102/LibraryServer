@@ -64,7 +64,7 @@ app.get('/users/:id', (req, res) => {
 })
 
 app.get("*", (req, res) => {
-    status(401).json({
+    res.status(401).json({
         message: "Route doesn't exist"
     });
 })
@@ -101,6 +101,56 @@ app.post("/users", (req, res) => {
             subscriptionDate
         });
         
+    }
+})
+
+// PUT Method
+/*
+4.
+Route- /users/:id
+description- Update user by it's identifier i.e. id
+method- PUT
+access- public
+parameters- id
+*/
+
+app.put("/users/:id", (req, res) => {
+    // requesting id
+    const {id} = req.params;
+    // data to update
+    const {data} = req.body;
+    // if user id is already present
+    const user = users.find((each) => each.id === id);
+
+    if (!user) {
+        res.status(401).json({
+            success : false,
+            message : "User does not exist!",
+        })
+    }
+    else{
+        const updateduser = users.map((each) => {
+            if(each.id === id);{
+                return 
+            }
+        })
+    }
+})
+
+
+// DELETE Method
+/*5.
+Route- /users/:id
+description- Delete user by it's identifier i.e. id
+method- Delete
+access- public
+parameters- id
+*/
+app.delete("/user", (req, res)=>{
+    const {id} = req.params;
+    const user = users.find((each)=> each.id === id);
+    if (user){
+        const updatedarray = users.
     }
 })
 
